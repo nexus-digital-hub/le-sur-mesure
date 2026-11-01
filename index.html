@@ -1,0 +1,807 @@
+<!--
+  ══════════════════════════  IMAGE GUIDE  ══════════════════════════
+  Every picture of the website is a file inside the folder  images/
+  (the folder sits next to this index.html).
+
+  TO CHANGE A PICTURE: put your new photo in images/ with EXACTLY the same
+  filename (same name, same .jpg ending). The website shows it automatically.
+  You never need to edit this HTML file to change a photo.
+
+  hero.jpg                    Homepage: big photo at the top
+  atelier.jpg                 Homepage: "À propos" section
+  porte-entree-01.jpg         Portes d'entrée: 1st door  (also the cover of the "Portes d'entrée" card)
+  porte-entree-02.jpg         Portes d'entrée: 2nd door
+  porte-interieure-01.jpg     Portes intérieures: 1st door (card cover)
+  porte-interieure-02.jpg     Portes intérieures: 2nd door
+  porte-moderne-01.jpg        Portes modernes: 1st door (card cover)
+  porte-moderne-02.jpg        Portes modernes: 2nd door
+  porte-classique-01.jpg      Portes classiques: 1st door (card cover)
+  porte-classique-02.jpg      Portes classiques: 2nd door
+  porte-vitree-01.jpg         Portes vitrées: 1st door (card cover)
+  porte-vitree-02.jpg         Portes vitrées: 2nd door
+  porte-surmesure-01.jpg      Portes sur mesure: 1st door (card cover)
+  porte-surmesure-02.jpg      Portes sur mesure: 2nd door
+  chene.jpg   noyer.jpg   hetre.jpg   frene.jpg   acajou.jpg   exotique.jpg
+                              Wood cards: oak, walnut, beech, ash, mahogany, exotic wood
+
+  TIPS: use JPG, about 1600 px wide, under 400 KB. Keep the main subject in the
+  centre (photos are cropped differently on phone and desktop).
+  After replacing a file, refresh the page with Ctrl+F5 (Cmd+Shift+R on Mac).
+  Phone, WhatsApp, email and address: see CONFIG in the script at the bottom.
+-->
+<title>LE SUR MESURE BY HMD</title>
+<meta name="description" content="LE SUR MESURE BY HMD crée des portes en bois sur mesure : portes d’entrée, intérieures, modernes, classiques et vitrées. Appelez-nous pour un devis personnalisé.">
+<meta property="og:title" content="LE SUR MESURE BY HMD — Portes en bois sur mesure">
+<meta property="og:description" content="Des portes qui vous ressemblent : essences de bois sélectionnées, finitions choisies avec vous. Appelez-nous pour un devis.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* LAYOUT CONCEPT — atelier éditorial : bandes de couleur pleine largeur (forêt, noyer, terracotta, crème),
+   la porte en arche comme motif répété, le bois présenté en échantillons tactiles. */
+:root{
+  /* Palette (bois, vert profond, crème, terracotta, brun, safran) */
+  --cream:#F7EFE0; --sand:#EEDFC5; --ink:#3A2415; --muted:#6B5443;
+  --forest:#2F4A38; --walnut:#3B2616; --terra:#B84A1F; --oak:#B9854F; --sun:#E8A33D;
+  --on-dark:#F7EFE0; --on-dark-muted:rgba(247,239,224,.8);
+  /* Rôles */
+  --bg:var(--cream); --bg-alt:var(--sand); --fg:var(--ink); --fg-muted:var(--muted);
+  --card:#FFF8EA; --line:rgba(58,36,21,.16); --accent-ink:#A8401A; --btn:#B84A1F;
+  /* Typographie */
+  --font-display:'Fraunces',Georgia,'Times New Roman',serif;
+  --font-body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  /* Formes et mouvement */
+  --arch:clamp(90px,24vw,240px); --radius:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1F1812; --bg-alt:#291F17; --fg:#F3E8D6; --fg-muted:#C4B099; --card:#2B2119;
+    --line:rgba(247,239,224,.16); --accent-ink:#F0A070; --btn:#C9572A;
+    --forest:#233A2B; --walnut:#2D1C10; --terra:#9F3F18; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1F1812; --bg-alt:#291F17; --fg:#F3E8D6; --fg-muted:#C4B099; --card:#2B2119;
+  --line:rgba(247,239,224,.16); --accent-ink:#F0A070; --btn:#C9572A;
+  --forest:#233A2B; --walnut:#2D1C10; --terra:#9F3F18; color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:78px}
+@media (min-width:760px){body{padding-bottom:0}}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;margin:0;text-wrap:balance;overflow-wrap:break-word}
+ul,ol{margin:0}
+main:focus{outline:none}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.section{padding-block:clamp(56px,9vw,112px);scroll-margin-top:72px}
+.section--alt{background:var(--bg-alt)}
+.section--forest{background:var(--forest);color:var(--on-dark)}
+.section--walnut{background:var(--walnut);color:var(--on-dark)}
+.section--terra{background:var(--terra);color:var(--on-dark)}
+.skip{position:absolute;left:16px;top:-80px;z-index:100;background:var(--sun);color:#2E1A0C;padding:10px 16px;border-radius:999px;font-weight:700;text-decoration:none}
+.skip:focus{top:calc(10px + env(safe-area-inset-top,0px))}
+
+/* ——— Titres de section ——— */
+.sec-head{display:grid;gap:14px;max-width:46rem;margin-bottom:clamp(28px,5vw,56px)}
+.sec-head h2,.h2{font-size:clamp(2rem,5.2vw,3.7rem);text-transform:uppercase;letter-spacing:.005em}
+.eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--accent-ink)}
+.section--forest .eyebrow,.section--walnut .eyebrow,.section--terra .eyebrow,.hero .eyebrow,.page-head .eyebrow{color:var(--sun)}
+.lede{font-size:clamp(1.02rem,1.6vw,1.16rem);max-width:40rem;color:var(--fg-muted)}
+.section--forest .lede,.section--walnut .lede,.section--terra .lede,.hero .lede,.page-head .lede{color:var(--on-dark-muted)}
+
+/* ——— Boutons ——— */
+.btn{--b-bg:var(--btn);--b-fg:#FFF6E8;--b-bd:transparent;display:inline-flex;align-items:center;justify-content:center;gap:.65em;padding:.95em 1.5em;border-radius:999px;border:2px solid var(--b-bd);background:var(--b-bg);color:var(--b-fg);font:700 .84rem/1.15 var(--font-body);letter-spacing:.09em;text-transform:uppercase;text-decoration:none;text-align:center;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background-color .25s,color .25s,border-color .25s}
+.btn svg{width:1.3em;height:1.3em;flex:none;transition:transform .25s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 22px -14px rgba(30,12,0,.6)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn:active{transform:translateY(0)}
+.btn--sun{--b-bg:var(--sun);--b-fg:#2E1A0C}
+.btn--sun:hover{--b-bg:#F2B755}
+.btn--cream{--b-bg:var(--cream);--b-fg:#2E1A0C}
+.btn--cream:hover{--b-bg:#fff}
+.btn--wa{--b-bg:#2B7A4E;--b-fg:#FFF6E8}
+.btn--wa:hover{--b-bg:#34905D}
+.btn--ghost{--b-bg:transparent;--b-fg:var(--fg);--b-bd:var(--fg)}
+.btn--ghost:hover{--b-bg:var(--fg);--b-fg:var(--bg)}
+.btn--ghost-light{--b-bg:transparent;--b-fg:var(--on-dark);--b-bd:rgba(247,239,224,.65)}
+.btn--ghost-light:hover{--b-bg:var(--on-dark);--b-fg:#2E1A0C}
+.btn--sm{padding:.7em 1.15em;font-size:.78rem}
+.btn--xl{font-size:1rem;padding:1.15em 1.8em;min-height:64px}
+.btn--block{width:100%}
+.link-arrow{display:inline-flex;align-items:center;gap:.4em;font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:inherit;border-bottom:2px solid currentColor;padding-bottom:2px}
+.link-arrow svg{width:1.1em;height:1.1em}
+
+/* ——— En-tête ——— */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 90%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-display);font-weight:700;font-size:1.08rem;letter-spacing:.07em;white-space:nowrap}
+.brand svg{width:24px;height:28px}
+.brand__le{font-weight:500;font-style:italic;letter-spacing:.02em}
+.nav-links{display:none;list-style:none;padding:0;gap:clamp(18px,2.4vw,34px)}
+.nav-links a{position:relative;text-decoration:none;font-weight:600;font-size:.93rem;padding-block:6px;background:linear-gradient(var(--btn),var(--btn)) left bottom/0 2px no-repeat;transition:background-size .3s var(--ease)}
+.nav-links a:hover,.nav-links a[aria-current="page"]{background-size:100% 2px}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-call span{display:none}
+@media (min-width:480px){.nav-call span{display:inline}}
+.menu-btn{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--fg);background:transparent;color:var(--fg);display:grid;place-items:center;cursor:pointer}
+.menu-btn svg{width:22px;height:22px}
+.mobile-menu{border-top:1px solid var(--line);background:var(--bg);padding-block:8px 20px;display:grid}
+.mobile-menu a:not(.btn){display:block;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-family:var(--font-display);font-size:1.45rem;font-weight:600}
+.mobile-menu .btn{margin-top:18px}
+@media (min-width:960px){.nav-links{display:flex}.menu-btn,.mobile-menu{display:none!important}}
+
+/* ——— Médias ——— */
+.media{position:relative;overflow:hidden;aspect-ratio:var(--ar,4/3);max-width:100%;background:var(--bg-alt);isolation:isolate}
+.media.arch{border-radius:var(--arch) var(--arch) var(--radius) var(--radius)}
+.media.round{border-radius:var(--radius)}
+.art{position:absolute;inset:0}
+.art>img{width:100%;height:100%;object-fit:cover}
+.art{transition:transform .9s var(--ease)}
+.media.parallax .art{transform:translate3d(0,var(--py,0px),0) scale(1.12)}
+.art>img{transition:transform .9s var(--ease)}
+.hoverzoom:hover .art>img{transform:scale(1.06)}
+
+/* ——— Hero ——— */
+.hero{background:var(--forest);color:var(--on-dark);overflow:hidden;scroll-margin-top:72px}
+.hero__grid{display:grid;gap:34px;align-items:center;padding-block:clamp(34px,6vw,76px)}
+@media (min-width:900px){.hero__grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px}}
+.hero__text{display:grid;gap:22px;justify-items:start}
+.hero h1{font-size:clamp(2.2rem,5.7vw,4.5rem);text-transform:uppercase;line-height:.98;letter-spacing:-.005em}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--sun);text-transform:uppercase}
+.hero .lede{font-size:clamp(1.05rem,1.7vw,1.22rem)}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero__call{font-size:.98rem;color:var(--on-dark-muted)}
+.hero__call a{color:var(--on-dark);font-weight:700;white-space:nowrap}
+.hero__media{position:relative;--ar:4/3}
+@media (min-width:900px){.hero__media{--ar:1/1.08}}
+.hero__media::before{content:"";position:absolute;width:72%;aspect-ratio:1;right:-14%;bottom:-16%;border-radius:50%;background:var(--terra);z-index:0}
+.hero__media .media{position:relative;z-index:1;box-shadow:0 30px 50px -28px rgba(0,0,0,.65)}
+.values{background:var(--sun);color:#2E1A0C}
+.values ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;padding-block:14px}
+.values li{font-weight:700;font-size:.74rem;letter-spacing:.17em;text-transform:uppercase}
+.values li+li::before{content:"—";margin-right:14px;opacity:.6}
+
+/* ——— Catégories ——— */
+.grid-cats{display:grid;gap:clamp(28px,4vw,44px) clamp(18px,3vw,32px);grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){.grid-cats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.grid-cats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cat{display:grid;gap:18px;align-content:start;min-width:0}
+.cat__link{display:block;text-decoration:none}
+.cat__body{display:grid;gap:10px;justify-items:start;padding-inline:4px}
+.cat h3{font-size:clamp(1.5rem,2.4vw,1.9rem)}
+.cat__body p{color:var(--fg-muted)}
+.cat__count{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--accent-ink)}
+.cat .btn{margin-top:6px}
+.cat .media{--arch:min(46%,170px)}
+
+/* ——— Essences ——— */
+.grid-woods{display:grid;gap:clamp(22px,3vw,34px);grid-template-columns:minmax(0,1fr)}
+@media (min-width:560px){.grid-woods{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:960px){.grid-woods{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.wood{display:grid;gap:16px;align-content:start;min-width:0;transition:transform .5s var(--ease)}
+.wood:hover{transform:translateY(-6px) rotate(-.4deg)}
+.wood .media{border-radius:14px;box-shadow:0 22px 34px -20px rgba(0,0,0,.75),inset 0 0 0 1px rgba(255,255,255,.08)}
+.wood .media::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,236,200,.22),inset 0 -50px 60px -46px rgba(0,0,0,.55)}
+.wood h3{font-size:clamp(1.6rem,2.4vw,2.1rem)}
+.wood p{color:var(--on-dark-muted);font-size:.98rem}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0}
+.tags li{font-size:.76rem;font-weight:600;letter-spacing:.06em;padding:5px 12px;border-radius:999px;border:1px solid currentColor}
+.wood .tags li{border-color:rgba(247,239,224,.4)}
+
+/* ——— Personnalisation ——— */
+.custom{display:grid;gap:36px}
+@media (min-width:900px){.custom{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:72px}.custom__intro{position:sticky;top:110px;align-self:start}}
+.custom__intro{display:grid;gap:22px;justify-items:start}
+.opts{list-style:none;padding:0;display:grid}
+.opt{display:grid;grid-template-columns:52px minmax(0,1fr);gap:2px 18px;padding-block:18px;border-top:1px solid rgba(247,239,224,.32)}
+.opt:last-child{border-bottom:1px solid rgba(247,239,224,.32)}
+.opt__ic{grid-row:span 2;width:52px;height:52px;border-radius:50%;background:rgba(247,239,224,.16);display:grid;place-items:center;transition:background-color .3s,transform .3s var(--ease)}
+.opt:hover .opt__ic{background:var(--sun);color:#2E1A0C;transform:rotate(-6deg)}
+.opt__ic svg{width:26px;height:26px}
+.opt h3{font-size:1.3rem}
+.opt p{color:var(--on-dark-muted);font-size:.98rem}
+
+/* ——— À propos ——— */
+.about{display:grid;gap:36px;align-items:center}
+@media (min-width:900px){.about{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:72px}}
+.about__text{display:grid;gap:20px;justify-items:start}
+.about__text .lede{color:var(--fg)}
+.ph{display:inline-block;outline:1.5px dashed var(--accent-ink);outline-offset:4px;border-radius:4px;color:var(--accent-ink);font-size:.95rem}
+.vals{display:grid;gap:18px 28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));list-style:none;padding:0;margin-top:6px;width:100%}
+.vals li{border-top:2px solid var(--btn);padding-top:12px}
+.vals h3{font-size:1.25rem;margin-bottom:4px}
+.vals p{color:var(--fg-muted);font-size:.96rem}
+.about .media{--ar:4/3}
+@media (min-width:900px){.about .media{--ar:4/5}}
+
+/* ——— Contact ——— */
+.contact{display:grid;gap:40px}
+@media (min-width:960px){.contact{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:72px;align-items:start}}
+.contact__main{display:grid;gap:22px;justify-items:start}
+.contact__main h2{font-size:clamp(2.2rem,6vw,4.2rem);text-transform:uppercase}
+.bigphone{display:grid;gap:10px;justify-items:start;width:100%;padding-top:6px}
+.bigphone .btn{width:100%;max-width:520px}
+.phone-num{font-family:var(--font-display);font-weight:600;font-size:clamp(1.8rem,5vw,2.7rem);letter-spacing:.01em;user-select:all;-webkit-user-select:all}
+.copy{background:none;border:0;color:var(--on-dark);font:600 .85rem var(--font-body);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px 0}
+.prep{background:rgba(247,239,224,.09);border:1px solid rgba(247,239,224,.2);border-radius:16px;padding:20px 22px;width:100%}
+.prep h3{font-size:1.15rem;margin-bottom:10px}
+.prep ul{padding-left:1.1rem;display:grid;gap:6px;color:var(--on-dark-muted)}
+.clist{list-style:none;padding:0;display:grid;gap:14px}
+.ccard{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;background:rgba(247,239,224,.09);border:1px solid rgba(247,239,224,.22);border-radius:16px;padding:18px 20px}
+.ccard__ic{width:46px;height:46px;border-radius:50%;background:var(--sun);color:#2E1A0C;display:grid;place-items:center;flex:none}
+.ccard__ic svg{width:22px;height:22px}
+.ccard__t{flex:1 1 190px;min-width:0}
+.ccard__l{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sun)}
+.ccard__v{font-weight:600;font-size:1.05rem;overflow-wrap:anywhere}
+
+/* ——— Pages collection et porte ——— */
+.page-head{background:var(--forest);color:var(--on-dark)}
+.page-head__grid{display:grid;gap:30px;align-items:center;padding-block:clamp(30px,5vw,64px)}
+@media (min-width:860px){.page-head__grid{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:56px}}
+.page-head__text{display:grid;gap:18px;justify-items:start}
+.page-head h1{font-size:clamp(2.2rem,5.6vw,4.2rem);text-transform:uppercase}
+.page-head .media{--ar:5/4;--arch:min(46%,170px)}
+.crumbs{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:4px 10px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.crumbs li+li::before{content:"/";margin-right:10px;opacity:.55}
+.crumbs a{text-decoration:none;opacity:.85}
+.crumbs a:hover{opacity:1;text-decoration:underline}
+.crumbs--ink{color:var(--fg-muted)}
+.grid-products{display:grid;gap:clamp(20px,3vw,32px);grid-template-columns:minmax(0,1fr)}
+@media (min-width:700px){.grid-products{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pcard{display:grid;grid-template-rows:auto 1fr;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;min-width:0;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 24px 40px -28px rgba(30,12,0,.55)}
+.pcard__img{position:relative;display:block;text-decoration:none}
+.wood-badge{position:absolute;left:14px;bottom:14px;z-index:3;display:inline-flex;align-items:center;gap:8px;background:rgba(30,12,0,.72);color:#fff;font-size:.76rem;font-weight:600;letter-spacing:.06em;padding:6px 12px;border-radius:999px}
+.wood-badge i{width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(255,255,255,.8)}
+.pcard__body{display:grid;gap:12px;align-content:start;padding:22px}
+.pcard h3{font-size:clamp(1.5rem,2.2vw,1.8rem)}
+.pcard__body>p{color:var(--fg-muted)}
+.pcard .tags li{border-color:var(--line);font-weight:500;color:var(--fg-muted)}
+.pcard__act{display:grid;gap:10px;margin-top:6px}
+.pd{display:grid;gap:32px;padding-block:clamp(28px,5vw,64px)}
+@media (min-width:900px){.pd{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:start}.pd__media{position:sticky;top:96px}}
+.pd__media .media{--ar:4/3;--arch:clamp(90px,24vw,230px)}
+@media (min-width:900px){.pd__media .media{--ar:4/5}}
+.pd__info{display:grid;gap:20px;justify-items:start}
+.pd__info h1{font-size:clamp(2.2rem,5vw,3.6rem);text-transform:uppercase}
+.wood-line{display:inline-flex;align-items:center;gap:10px;font-weight:600}
+.wood-line i{width:18px;height:18px;border-radius:50%;border:2px solid var(--fg)}
+.pd__opts{list-style:none;padding:0;display:grid;gap:10px;width:100%;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.pd__opts li{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:var(--card);font-weight:600;font-size:.95rem}
+.pd__opts svg{width:22px;height:22px;flex:none;color:var(--accent-ink)}
+.pd__h{font-family:var(--font-body);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--accent-ink)}
+.quote-box{display:grid;gap:14px;width:100%;background:var(--forest);color:var(--on-dark);border-radius:var(--radius);padding:24px}
+.quote-box h2{font-size:1.5rem;text-transform:uppercase}
+.quote-box p{color:var(--on-dark-muted);font-size:.98rem}
+.quote-box .phone-num{font-size:1.6rem}
+.chips-nav{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0}
+.chips-nav a{display:inline-block;padding:10px 18px;border:1.5px solid var(--fg);border-radius:999px;text-decoration:none;font-weight:600;transition:background-color .25s,color .25s}
+.chips-nav a:hover{background:var(--fg);color:var(--bg)}
+.ctaband{display:grid;gap:22px;align-items:center}
+@media (min-width:860px){.ctaband{grid-template-columns:minmax(0,1.2fr) auto;gap:48px}}
+.ctaband h2{font-size:clamp(1.9rem,4.4vw,3rem);text-transform:uppercase}
+.ctaband p{color:var(--on-dark-muted);margin-top:12px;max-width:36rem}
+.ctaband__act{display:grid;gap:10px}
+@media (min-width:860px){.ctaband__act{min-width:300px}}
+
+/* ——— Avis Google ——— */
+.rv-sum{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:1.05rem}
+.rv-sum strong{font-family:var(--font-display);font-size:2.4rem;line-height:1}
+.stars{display:inline-flex;gap:2px;color:var(--line);font-size:1.1rem;letter-spacing:0}
+.stars .on{color:var(--sun)}
+.rv-grid{display:grid;gap:clamp(16px,2.4vw,26px);grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));margin-bottom:clamp(24px,4vw,40px)}
+.rv-card{display:grid;gap:12px;align-content:start;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;min-width:0}
+.rv-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 12px}
+.rv-date{font-size:.82rem;color:var(--fg-muted)}
+.rv-text{overflow-wrap:anywhere}
+.rv-name{font-weight:700}
+.rv-name span{font-weight:500;font-size:.85rem;color:var(--fg-muted)}
+
+/* ——— Pied de page ——— */
+.footer{background:var(--walnut);color:var(--on-dark);padding-block:clamp(44px,7vw,80px) 28px}
+.footer__grid{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.footer h3{font-family:var(--font-body);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sun);margin-bottom:12px}
+.footer ul{list-style:none;padding:0;display:grid;gap:8px}
+.footer a{text-decoration:none;color:var(--on-dark-muted)}
+.footer a:hover{color:#fff;text-decoration:underline}
+.footer .brand{font-size:1.3rem;margin-bottom:12px;color:var(--on-dark)}
+.footer p{color:var(--on-dark-muted);font-size:.96rem;max-width:28rem}
+.footer__base{margin-top:36px;padding-top:20px;border-top:1px solid rgba(247,239,224,.2);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:.82rem;color:var(--on-dark-muted)}
+
+/* ——— Barre mobile ——— */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--bg) 94%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.mbar .btn{min-height:50px;padding-inline:.8em}
+@media (min-width:760px){.mbar{display:none}}
+
+/* ——— Animations discrètes ——— */
+.js [data-reveal]{opacity:.72;transform:translateY(18px);transition:opacity .8s ease,transform .8s var(--ease);transition-delay:var(--d,0ms)}
+.js [data-reveal].in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}
+  .js [data-reveal]{opacity:1;transform:none}
+  .media.parallax .art{transform:scale(1.02)}
+  .wood:hover,.pcard:hover,.btn:hover{transform:none}
+}
+</style>
+
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site-header" id="site-header"></header>
+<main id="main" tabindex="-1"></main>
+<footer class="footer" id="site-footer"></footer>
+<div class="mbar" id="mbar" role="group" aria-label="Contact rapide"></div>
+
+<script>
+(function () {
+'use strict';
+document.documentElement.lang = 'fr';
+document.documentElement.classList.add('js');
+
+/* ════════════════════════════════════════════════════════════════
+   1. CONFIGURATION — tout ce qui change se modifie ICI
+   ════════════════════════════════════════════════════════════════ */
+const CONFIG = {
+  brand: 'LE SUR MESURE BY HMD',
+  phoneDisplay: '05 56 49 24 33',        // numéro affiché (remplacer ici, une seule fois)
+  phoneTel: '+213556492433',             // même numéro, format international (lien d’appel)
+  whatsappNumber: '213556492433',        // format international, sans « + »
+  email: 'lesurmesure48@gmail.com',
+  mapsUrl: 'https://maps.app.goo.gl/AqDQHjrTDfrewZrT6',   // position de l’atelier sur Google Maps
+  addressLabel: 'Notre atelier sur Google Maps',           // texte affiché pour l’adresse
+  facebook: 'https://www.facebook.com/lesurmesuredz',                          // lien de la page Facebook (laisser vide = rien d’affiché)
+  hours: '',                             // horaires (laisser vide = rien d’affiché)
+  showPlaceholderBadge: false            // true = affiche « Visuel d’exemple » sur les images de démonstration
+};
+
+/* ════════════════════════════════════════════════════════════════
+   2. CONTENU (textes, essences, collections, modèles)
+   ════════════════════════════════════════════════════════════════ */
+/* Chaque essence : photo = images/<clé>.jpg (ex. chene.jpg). Le nom du fichier est dans « img ». */
+/* ──────────────────────────────  AVIS GOOGLE  ──────────────────────────────
+   Seuls de VRAIS avis doivent être placés ici (copiés tels quels depuis votre fiche Google).
+   Tant que la liste est vide, le site affiche uniquement un bouton vers vos avis sur Google
+   (CONFIG.mapsUrl) : aucun faux avis n'est jamais affiché.
+   Pour afficher la note, le nombre d'avis et les avis, remplissez par exemple :
+     rating: '4.8', count: '23',
+     reviews: [ { name:'Prénom N.', stars:5, date:'août 2026', text:'Texte exact de l’avis…' } ]  */
+const GOOGLE_REVIEWS = { rating: '', count: '', reviews: [] };
+
+const WOODS = {
+  chene: { name:'Chêne', base:'#C49A5F', img:'chene.jpg', tone:'Miel doré', grain:'Veinage marqué',
+    desc:'Un veinage bien dessiné et des nuances de miel. Un bois franc, chaleureux, qui affirme sa matière.' },
+  noyer: { name:'Noyer', base:'#6A4430', img:'noyer.jpg', tone:'Brun chocolat', grain:'Veines ondulées',
+    desc:'Un brun profond traversé de veines ondulées, aux nuances changeantes selon la lumière. Du caractère, sans effort.' },
+  hetre: { name:'Hêtre', base:'#DDB992', img:'hetre.jpg', tone:'Rosé clair', grain:'Grain fin',
+    desc:'Un grain fin et régulier, une teinte claire légèrement rosée. Une base douce et lumineuse.' },
+  frene: { name:'Frêne', base:'#E3CFA6', img:'frene.jpg', tone:'Crème clair', grain:'Lignes nettes',
+    desc:'Clair et lumineux, dessiné de lignes nettes et graphiques. Une allure contemporaine et vive.' },
+  acajou: { name:'Acajou', base:'#8E3F26', img:'acajou.jpg', tone:'Rouge cuivré', grain:'Fil régulier',
+    desc:'Un rouge brun intense aux reflets cuivrés, qui s’approfondit à la lumière. Une allure noble.' },
+  exotique: { name:'Bois exotique', base:'#8C5026', img:'exotique.jpg', tone:'Contrastes marqués', grain:'Rayures franches',
+    desc:'Rayures franches, contrastes marqués, teintes rares. Pour une porte qui ne ressemble à aucune autre.' }
+};
+
+const CATS = [
+  { id:'entree',     title:'Portes d’entrée', desc:'Massives et accueillantes : la première impression de votre maison, dessinée à vos mesures.',
+    intro:'Le seuil de votre maison mérite une porte qui s’impose sans crier. Nos portes d’entrée sont dessinées pour votre ouverture, dans l’essence et la finition que vous choisissez.' },
+  { id:'interieure', title:'Portes intérieures', desc:'Des lignes sobres ou travaillées pour rythmer chaque pièce et laisser circuler la lumière.',
+    intro:'Une porte intérieure se remarque par ce qu’elle apporte à la pièce : une matière, une teinte, un geste. Chacune est ajustée à vos dimensions.' },
+  { id:'moderne',    title:'Portes modernes', desc:'Lignes épurées, rainures franches et poignées fines pour les intérieurs contemporains.',
+    intro:'Des lignes nettes, des rainures franches et des détails fins. Le bois garde sa chaleur, le dessin reste contemporain.' },
+  { id:'classique',  title:'Portes classiques', desc:'Panneaux moulurés et proportions traditionnelles, pour le charme intemporel du bois.',
+    intro:'Panneaux moulurés, proportions traditionnelles, bois patiné : le classique assumé, réalisé avec la précision d’une pièce unique.' },
+  { id:'vitree',     title:'Portes vitrées', desc:'Verre et bois réunis pour partager la lumière sans renoncer à l’intimité.',
+    intro:'Le bois dessine le cadre, le verre laisse passer la lumière. Vitrage clair, dépoli ou structuré : vous dosez la transparence.' },
+  { id:'surmesure',  title:'Portes sur mesure', desc:'Forme, cintre, motif, dimension : une pièce unique, imaginée avec vous et fabriquée pour vous.',
+    intro:'Une ouverture singulière, une idée précise ou simplement l’envie d’une porte qu’on ne trouve nulle part : on la dessine ensemble.' }
+];
+
+const OPTS = {
+  dimensions: { label:'Dimensions', text:'Largeur, hauteur, épaisseur : la porte est faite pour votre ouverture, pas l’inverse.',
+    icon:'<path d="M3 9h18v6H3z"/><path d="M7 9v3M11 9v2M15 9v3M19 9v2"/>' },
+  essence:    { label:'Essence de bois', text:'Du chêne à l’acajou, choisissez la matière et son veinage.',
+    icon:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="2"/>' },
+  teinte:     { label:'Teinte', text:'Naturelle, cérusée, foncée ou colorée : donnez le ton à votre porte.',
+    icon:'<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>' },
+  finition:   { label:'Finition', text:'Huilée, vernie, mate ou satinée : le toucher et l’éclat du bois.',
+    icon:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/>' },
+  poignees:   { label:'Poignées', text:'Laiton, noir mat, inox ou bois : la main se pose sur le détail qui compte.',
+    icon:'<circle cx="7" cy="12" r="3.5"/><path d="M10.5 12H21"/>' },
+  vitrage:    { label:'Vitrage', text:'Clair, dépoli, structuré, cintré : la lumière dosée à votre goût.',
+    icon:'<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M4 12h16"/>' },
+  style:      { label:'Style', text:'Moderne, classique, rustique ou entièrement libre : la porte raconte votre intérieur.',
+    icon:'<path d="M6 21V9a6 6 0 0 1 12 0v12"/><path d="M3 21h18"/><path d="M14.5 15h.01"/>' }
+};
+const OPT_KEYS = Object.keys(OPTS);
+
+/* Chaque porte : photo = images/<img>. Pour ajouter une porte, copiez une ligne et ajoutez la photo. */
+const P = [
+  { id:'atelier', cat:'entree', img:'porte-entree-01.jpg', name:'Porte Atelier',   wood:'chene', desc:'Vantail plein en chêne, rainures verticales et poignée barre en laiton. Une entrée franche, qui annonce la couleur.', opts:['dimensions','essence','teinte','finition','poignees','style'] },
+  { id:'maison', cat:'entree', img:'porte-entree-02.jpg', name:'Porte Maison',    wood:'noyer', desc:'Noyer profond et lignes verticales : une entrée qui impose le respect sans élever la voix.', opts:['dimensions','essence','teinte','finition','poignees','style'] },
+  { id:'alba', cat:'interieure', img:'porte-interieure-01.jpg', name:'Porte Alba',      wood:'hetre', desc:'Vantail lisse en hêtre clair, discret et lumineux. Se prête aux teintes douces comme aux finitions naturelles.', opts:['dimensions','essence','teinte','finition','poignees'] },
+  { id:'calme', cat:'interieure', img:'porte-interieure-02.jpg', name:'Porte Calme',     wood:'frene', desc:'Un frêne veiné sur un vantail épuré : ici, la matière fait tout le décor.', opts:['dimensions','essence','teinte','finition','poignees'] },
+  { id:'lignes', cat:'moderne', img:'porte-moderne-01.jpg', name:'Porte Lignes',    wood:'frene', desc:'Rainures horizontales, bandeau vitré vertical et poignée fine en métal noir.', opts:['dimensions','essence','teinte','finition','poignees','vitrage','style'] },
+  { id:'strate', cat:'moderne', img:'porte-moderne-02.jpg', name:'Porte Strate',    wood:'noyer', desc:'Le noyer en strates horizontales, pour un intérieur contemporain qui garde de la chaleur.', opts:['dimensions','essence','teinte','finition','poignees','vitrage','style'] },
+  { id:'manoir', cat:'classique', img:'porte-classique-01.jpg', name:'Porte Manoir',    wood:'chene', desc:'Six panneaux moulurés, chêne clair et bouton en laiton : le classique assumé.', opts:['dimensions','essence','teinte','finition','poignees','style'] },
+  { id:'mahe', cat:'classique', img:'porte-classique-02.jpg', name:'Porte Mahé',      wood:'acajou', desc:'Panneaux moulurés en acajou aux reflets cuivrés. Une porte pensée pour durer et se transmettre.', opts:['dimensions','essence','teinte','finition','poignees','style'] },
+  { id:'clairiere', cat:'vitree', img:'porte-vitree-01.jpg', name:'Porte Clairière', wood:'chene', desc:'La lumière circule d’une pièce à l’autre, le chêne dessine le cadre et les petits-bois.', opts:['dimensions','essence','teinte','finition','poignees','vitrage','style'] },
+  { id:'verriere', cat:'vitree', img:'porte-vitree-02.jpg', name:'Porte Verrière',  wood:'hetre', desc:'Un grand vitrage en hêtre clair, entre atelier et appartement d’architecte.', opts:['dimensions','essence','teinte','finition','poignees','vitrage','style'] },
+  { id:'arche', cat:'surmesure', img:'porte-surmesure-01.jpg', name:'Porte Arche',     wood:'chene', desc:'Cintre, imposte vitrée en éventail et panneaux travaillés : une porte dessinée pour une ouverture singulière.', opts:['dimensions','essence','teinte','finition','poignees','vitrage','style'] },
+  { id:'signature', cat:'surmesure', img:'porte-surmesure-02.jpg', name:'Porte Signature', wood:'exotique', desc:'Un bois exotique aux rayures franches, pour une pièce unique que l’on dessine ensemble.', opts:['dimensions','essence','teinte','finition','poignees','vitrage','style'] }
+];
+const ANCHORS = ['accueil','portes','essences','personnalisation','apropos','contact'];
+
+/* ════════════════════════════════════════════════════════════════
+   4. OUTILS
+   ════════════════════════════════════════════════════════════════ */
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const waLink = msg => `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+const WA_DEFAULT = 'Bonjour, je souhaite un devis pour une porte sur mesure.';
+const svgi = (p, cls='') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${p}</svg>`;
+const I = {
+  phone: svgi('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>'),
+  wa:    svgi('<path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6L3 21z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-.8.8c-.8-.4-1.6-1.2-2-2l.8-.8-1-2z"/>'),
+  mail:  svgi('<rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 7l8.5 6 8.5-6"/>'),
+  pin:   svgi('<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>'),
+  arrow: svgi('<path d="M5 12h14M13 6l6 6-6 6"/>', 'arrow'),
+  menu:  svgi('<path d="M4 7h16M4 12h16M4 17h16"/>'),
+  close: svgi('<path d="M6 6l12 12M18 6L6 18"/>'),
+  fb:    svgi('<path d="M14 8.5V7c0-.8.5-1.200 1.200-1.200H17V3h-2.300C12.300 3 11 4.500 11 6.800v1.700H9V11.500h2V21h3v-9.500h2.500L17 8.500z"/>')
+};
+const optIcon = k => svgi(OPTS[k].icon);
+
+/* ════════════════════════════════════════════════════════════════
+   5. COMPOSANTS
+   ════════════════════════════════════════════════════════════════ */
+const phoneLink = (label, cls = '') => `<a class="btn ${cls}" href="tel:${CONFIG.phoneTel}">${I.phone}<span>${label}</span></a>`;
+const waButton  = (label, cls = '', msg = WA_DEFAULT) => `<a class="btn btn--wa ${cls}" href="${waLink(msg)}" target="_blank" rel="noopener">${I.wa}<span>${label}</span></a>`;
+const goButton  = (label, tok, cls = '') => `<a class="btn ${cls}" href="#${tok}"><span>${label}</span>${I.arrow}</a>`;
+const woodDot   = k => `<i style="background:${WOODS[k].base}"></i>`;
+const catOf     = id => CATS.find(c => c.id === id);
+const R = (i, n = 3) => `data-reveal style="--d:${(i % n) * 90}ms"`;
+
+const IMG_DIR = 'images/';   // dossier des photos, à côté de index.html
+function Media(file, alt, cls = '', ar = '', eager = false) {
+  return `<div class="media ${cls}"${ar ? ` style="--ar:${ar}"` : ''}><div class="art"><img src="${IMG_DIR}${esc(file)}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></div></div>`;
+}
+const catCover  = c => P.find(p => p.cat === c.id).img;          // la photo « -01 » de la collection sert de couverture
+const catMedia  = (c, cls = 'arch', ar = '5/4') => Media(catCover(c), `${c.title} : exemple de porte`, cls, ar);
+const doorMedia = (p, cls = '', ar = '4/3') => Media(p.img, `${p.name}, ${catOf(p.cat).title.toLowerCase()} en ${WOODS[p.wood].name.toLowerCase()}`, cls, ar);
+
+function Navbar() {
+  const links = [['Accueil','accueil'],['Nos portes','portes'],['Essences de bois','essences'],['À propos','apropos'],['Contact','contact']];
+  const li = links.map(([t, k]) => `<li><a href="#${k}">${t}</a></li>`).join('');
+  const mli = links.map(([t, k]) => `<a href="#${k}">${t}</a>`).join('');
+  return `<div class="wrap nav-row">
+    <a class="brand" href="#accueil" aria-label="${CONFIG.brand} — accueil">
+      <svg viewBox="0 0 24 28" aria-hidden="true"><path d="M3 27V11a9 9 0 0 1 18 0v16z" style="fill:var(--btn)"/><path d="M7.5 27V12a4.5 4.5 0 0 1 9 0v15" fill="none" stroke="#F7EFE0" stroke-width="1.6"/><circle cx="14.5" cy="19" r="1.2" fill="#F7EFE0"/></svg>
+      <span><span class="brand__le">LE</span> SUR MESURE BY HMD</span>
+    </a>
+    <nav aria-label="Navigation principale"><ul class="nav-links">${li}</ul></nav>
+    <div class="nav-actions">
+      <a class="btn btn--sm nav-call" href="tel:${CONFIG.phoneTel}">${I.phone}<span>Appelez-nous</span></a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Ouvrir le menu">${I.menu}</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu" hidden><div class="wrap"><nav aria-label="Menu mobile">${mli}</nav>${phoneLink('Appelez-nous', 'btn--block btn--xl')}</div></div>`;
+}
+
+function Hero() {
+  return `<section class="hero" id="accueil" aria-labelledby="hero-title"><div class="wrap hero__grid">
+    <div class="hero__text">
+      <p class="eyebrow">Portes en bois · Fabriquées sur mesure</p>
+      <h1 id="hero-title">Des portes qui vous <em>ressemblent</em></h1>
+      <p class="lede">LE SUR MESURE BY HMD crée des portes uniques à partir de bois soigneusement sélectionnés et de finitions choisies avec vous. Chaque porte est dessinée à vos dimensions, avec le caractère de votre intérieur.</p>
+      <div class="hero__cta">${goButton('Demander un devis', 'contact', 'btn--sun')}${goButton('Découvrir nos portes', 'portes', 'btn--ghost-light')}</div>
+      <p class="hero__call">Ou appelez directement : <a href="tel:${CONFIG.phoneTel}">${esc(CONFIG.phoneDisplay)}</a></p>
+    </div>
+    <div class="hero__media">${Media('hero.jpg', 'Porte d’entrée en chêne massif, rainures verticales et poignée en laiton', 'arch parallax', '', true)}</div>
+  </div></section>`;
+}
+
+function ValuesStrip() {
+  return `<div class="values"><div class="wrap"><ul aria-label="Nos valeurs">${['Sur mesure','Authenticité','Matière','Savoir-faire','Caractère'].map(v => `<li>${v}</li>`).join('')}</ul></div></div>`;
+}
+
+function CategoryCard(c, i) {
+  const n = P.filter(p => p.cat === c.id).length;
+  return `<article class="cat" ${R(i)}>
+    <a class="cat__link hoverzoom" href="#collection-${c.id}" tabindex="-1" aria-hidden="true">${catMedia(c)}</a>
+    <div class="cat__body">
+      <p class="cat__count">${n} modèle${n > 1 ? 's' : ''} à découvrir</p>
+      <h3>${c.title}</h3>
+      <p>${c.desc}</p>
+      ${goButton('Voir la collection', 'collection-' + c.id, 'btn--ghost btn--sm')}
+    </div></article>`;
+}
+
+function WoodCard(k, i) {
+  const w = WOODS[k];
+  return `<article class="wood hoverzoom" ${R(i)}>
+    ${Media(w.img, `Échantillon de ${w.name.toLowerCase()}`, '', '4/3')}
+    <h3>${w.name}</h3><p>${w.desc}</p>
+    <ul class="tags"><li>${w.tone}</li><li>${w.grain}</li></ul></article>`;
+}
+
+function ProductCard(p, i = 0) {
+  const c = catOf(p.cat), w = WOODS[p.wood];
+  const chips = p.opts.map(k => `<li>${OPTS[k].label}</li>`).join('');
+  return `<article class="pcard" ${R(i, 2)}>
+    <a class="pcard__img hoverzoom" href="#porte-${p.id}" aria-label="${esc(p.name)} — voir la porte">
+      ${doorMedia(p, '', '4/3')}<span class="wood-badge">${woodDot(p.wood)}${w.name}</span></a>
+    <div class="pcard__body">
+      <p class="eyebrow">${c.title}</p>
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+      <ul class="tags" aria-label="Options de personnalisation">${chips}</ul>
+      <div class="pcard__act">${phoneLink('Appeler pour le prix', 'btn--block')}<a class="link-arrow" href="#porte-${p.id}">Voir la porte ${I.arrow}</a></div>
+    </div></article>`;
+}
+
+function CtaBand(title, text, msg = WA_DEFAULT) {
+  return `<section class="section section--terra" aria-label="Demander un devis"><div class="wrap ctaband">
+    <div><h2>${title}</h2><p>${text}</p></div>
+    <div class="ctaband__act">${phoneLink('Appelez-nous pour un devis', 'btn--cream btn--xl')}${waButton('Écrire sur WhatsApp', 'btn--ghost-light', msg)}</div></div></section>`;
+}
+
+/* ——— Avis Google : seuls de VRAIS avis s'affichent (voir GOOGLE_REVIEWS en haut du script) ——— */
+function ReviewsSection() {
+  const g = GOOGLE_REVIEWS, list = g.reviews || [];
+  const stars = n => `<span class="stars" role="img" aria-label="${n} sur 5">${[1,2,3,4,5].map(i => `<span class="${i <= Math.round(n) ? 'on' : ''}" aria-hidden="true">★</span>`).join('')}</span>`;
+  const link = `<a class="btn btn--ghost btn--sm" href="${esc(CONFIG.mapsUrl)}" target="_blank" rel="noopener"><span>${list.length ? 'Voir tous les avis sur Google' : 'Voir nos avis sur Google'}</span>${I.arrow}</a>`;
+  const summary = g.rating && g.count
+    ? `<p class="rv-sum"><strong>${esc(String(g.rating).replace('.', ','))}</strong> ${stars(g.rating)} <span>${esc(g.count)} avis Google</span></p>` : '';
+  const cards = list.map((r, i) => `<article class="rv-card" ${R(i)}>
+      <div class="rv-top">${stars(r.stars)}${r.date ? `<span class="rv-date">${esc(r.date)}</span>` : ''}</div>
+      <p class="rv-text">${esc(r.text)}</p>
+      <p class="rv-name">${esc(r.name)} <span>· Avis Google</span></p></article>`).join('');
+  return `<section class="section" id="avis" aria-labelledby="t-avis"><div class="wrap">
+    <header class="sec-head" data-reveal><p class="eyebrow">Avis Google</p><h2 id="t-avis">Ils nous font confiance</h2>
+      <p class="lede">${list.length ? 'Les avis ci-dessous viennent directement de Google. Vous pouvez les consulter et les vérifier sur notre fiche.' : 'Retrouvez les avis de nos clients directement sur notre fiche Google.'}</p>${summary}</header>
+    ${list.length ? `<div class="rv-grid">${cards}</div>` : ''}
+    <div data-reveal>${link}</div></div></section>`;
+}
+
+function ContactSection() {
+  const card = (ic, label, val, action) => `<li class="ccard"><span class="ccard__ic">${ic}</span><div class="ccard__t"><div class="ccard__l">${label}</div><div class="ccard__v">${val}</div></div>${action || ''}</li>`;
+  return `<section class="section section--forest" id="contact" aria-labelledby="t-contact"><div class="wrap contact">
+    <div class="contact__main" data-reveal>
+      <p class="eyebrow">Devis personnalisé</p>
+      <h2 id="t-contact">Parlons de votre projet</h2>
+      <p class="lede">Le prix d’une porte sur mesure dépend de ses dimensions, de l’essence de bois, du dessin, de la finition et des options choisies. C’est pourquoi nous n’affichons pas de tarif : appelez-nous, parlons de votre projet et recevez un devis personnalisé.</p>
+      <div class="bigphone">
+        ${phoneLink('Appelez-nous pour un devis', 'btn--sun btn--xl')}
+        <span class="phone-num" id="phoneNum">${esc(CONFIG.phoneDisplay)}</span>
+        <button class="copy" type="button" data-copy="${esc(CONFIG.phoneDisplay)}">Copier le numéro</button>
+      </div>
+      <div class="prep"><h3>Pour gagner du temps, préparez</h3><ul>
+        <li>Les dimensions de l’ouverture, même approximatives</li>
+        <li>L’essence ou l’ambiance souhaitée</li>
+        <li>Une photo de l’emplacement</li>
+        <li>Votre style : moderne, classique, vitré…</li></ul></div>
+    </div>
+    <ul class="clist" data-reveal style="--d:120ms">
+      ${card(I.phone, 'Téléphone', `<span class="ph-text">${esc(CONFIG.phoneDisplay)}</span>`, `<a class="link-arrow" href="tel:${CONFIG.phoneTel}">Appeler ${I.arrow}</a>`)}
+      ${card(I.wa, 'WhatsApp', esc(CONFIG.phoneDisplay), `<a class="link-arrow" href="${waLink(WA_DEFAULT)}" target="_blank" rel="noopener">Écrire ${I.arrow}</a>`)}
+      ${card(I.mail, 'E-mail', esc(CONFIG.email), `<a class="link-arrow" href="mailto:${esc(CONFIG.email)}">Écrire ${I.arrow}</a>`)}
+      ${card(I.pin, 'Atelier', esc(CONFIG.addressLabel), `<a class="link-arrow" href="${esc(CONFIG.mapsUrl)}" target="_blank" rel="noopener">Itinéraire ${I.arrow}</a>`)}
+      ${CONFIG.facebook ? card(I.fb, 'Facebook', 'Suivez nos réalisations', `<a class="link-arrow" href="${esc(CONFIG.facebook)}" target="_blank" rel="noopener">Ouvrir ${I.arrow}</a>`) : ''}
+    </ul></div></section>`;
+}
+
+function Footer() {
+  return `<div class="wrap"><div class="footer__grid">
+    <div><a class="brand" href="#accueil"><span><span class="brand__le">LE</span> SUR MESURE BY HMD</span></a><p>Portes en bois sur mesure. Sur mesure, authenticité, matière, savoir-faire, caractère.</p></div>
+    <div><h3>Navigation</h3><ul><li><a href="#accueil">Accueil</a></li><li><a href="#portes">Nos portes</a></li><li><a href="#essences">Essences de bois</a></li><li><a href="#apropos">À propos</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h3>Collections</h3><ul>${CATS.map(c => `<li><a href="#collection-${c.id}">${c.title}</a></li>`).join('')}</ul></div>
+    <div><h3>Contact</h3><ul>
+      <li><a href="tel:${CONFIG.phoneTel}">${esc(CONFIG.phoneDisplay)}</a></li>
+      <li><a href="${waLink(WA_DEFAULT)}" target="_blank" rel="noopener">WhatsApp</a></li>
+      <li><a href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a></li>
+      <li><a href="${esc(CONFIG.mapsUrl)}" target="_blank" rel="noopener">${esc(CONFIG.addressLabel)}</a></li>
+      ${CONFIG.facebook ? `<li><a href="${esc(CONFIG.facebook)}" target="_blank" rel="noopener">Facebook</a></li>` : ''}</ul></div>
+  </div>
+  <div class="footer__base"><span>© ${new Date().getFullYear()} ${CONFIG.brand}. Tous droits réservés.</span><span>Aucun prix affiché : chaque porte est chiffrée sur devis.</span></div></div>`;
+}
+
+function MobileBar() { return phoneLink('Appeler', '') + waButton('WhatsApp'); }
+
+/* ════════════════════════════════════════════════════════════════
+   6. VUES
+   ════════════════════════════════════════════════════════════════ */
+function HomeView() {
+  return Hero() + ValuesStrip() + `
+  <section class="section" id="portes" aria-labelledby="t-portes"><div class="wrap">
+    <header class="sec-head" data-reveal><p class="eyebrow">Catalogue</p><h2 id="t-portes">Nos portes</h2>
+      <p class="lede">Six familles de portes, autant de points de départ. Chaque modèle se personnalise : on ajuste le bois, le dessin et les détails à votre projet.</p></header>
+    <div class="grid-cats">${CATS.map(CategoryCard).join('')}</div></div></section>
+
+  <section class="section section--walnut" id="essences" aria-labelledby="t-essences"><div class="wrap">
+    <header class="sec-head" data-reveal><p class="eyebrow">Essences de bois</p><h2 id="t-essences">L’essence fait la différence</h2>
+      <p class="lede">Chaque bois a sa couleur, son veinage, sa façon d’accrocher la lumière. Nous vous aidons à choisir celui qui fera l’âme de votre porte.</p></header>
+    <div class="grid-woods">${Object.keys(WOODS).map(WoodCard).join('')}</div></div></section>
+
+  <section class="section section--terra" id="personnalisation" aria-labelledby="t-custom"><div class="wrap custom">
+    <div class="custom__intro" data-reveal><p class="eyebrow">Personnalisation</p><h2 class="h2" id="t-custom">Votre porte. Vos choix.</h2>
+      <p class="lede">Aucune porte n’est standard. Chaque détail se décide avec vous, du premier croquis à la finition.</p>
+      ${goButton('Parler à un conseiller', 'contact', 'btn--cream')}</div>
+    <ul class="opts">${OPT_KEYS.map((k, i) => `<li class="opt" ${R(i, 4)}><span class="opt__ic">${optIcon(k)}</span><h3>${OPTS[k].label}</h3><p>${OPTS[k].text}</p></li>`).join('')}</ul>
+  </div></section>
+
+  <section class="section section--alt" id="apropos" aria-labelledby="t-about"><div class="wrap about">
+    <div class="about__text" data-reveal><p class="eyebrow">À propos</p><h2 class="h2" id="t-about">Du bois, du soin, du sur mesure</h2>
+      <p class="lede">LE SUR MESURE BY HMD conçoit des portes en bois pensées pour un lieu, une famille, un style. Nous travaillons des matières choisies avec soin, avec la précision que demande une porte qui doit s’ajuster au millimètre.</p>
+      <p>Dans notre atelier, chaque porte commence par une conversation : votre ouverture, votre intérieur, vos envies. Nous choisissons ensuite le bois, dessinons la porte et soignons les finitions jusqu’au dernier détail. Le résultat est une porte unique, faite pour durer et pour vous ressembler.</p>
+      <ul class="vals">
+        <li><h3>Matière</h3><p>Des bois sélectionnés pour leur veinage et leur caractère.</p></li>
+        <li><h3>Savoir-faire</h3><p>Le geste juste, de la découpe à la finition.</p></li>
+        <li><h3>Précision</h3><p>Chaque porte est ajustée à son ouverture.</p></li>
+        <li><h3>Sur mesure</h3><p>Dimensions, essence, style : tout se décide avec vous.</p></li></ul></div>
+    <div data-reveal style="--d:120ms">${Media('atelier.jpg', 'Assortiment d’essences de bois : chêne, noyer, hêtre, frêne, acajou et bois exotique', 'arch parallax')}</div>
+  </div></section>` + ReviewsSection() + ContactSection();
+}
+
+function CategoryView(c) {
+  const items = P.filter(p => p.cat === c.id);
+  return `<section class="page-head" aria-labelledby="t-cat"><div class="wrap page-head__grid">
+    <div class="page-head__text">
+      <nav aria-label="Fil d’Ariane"><ol class="crumbs"><li><a href="#accueil">Accueil</a></li><li><a href="#portes">Nos portes</a></li><li aria-current="page">${c.title}</li></ol></nav>
+      <p class="eyebrow">Collection</p><h1 id="t-cat">${c.title}</h1><p class="lede">${c.intro}</p>
+      <div class="hero__cta">${phoneLink('Appelez-nous pour un devis', 'btn--sun')}${waButton('WhatsApp', 'btn--ghost-light', 'Bonjour, je souhaite un devis pour une de vos ' + c.title.toLowerCase() + '.')}</div>
+    </div>${catMedia(c, 'arch')}
+  </div></section>
+  <section class="section" aria-label="Modèles"><div class="wrap"><div class="grid-products">${items.map(ProductCard).join('')}</div></div></section>
+  <section class="section section--alt" aria-label="Autres collections"><div class="wrap"><header class="sec-head"><p class="eyebrow">Continuer la visite</p><h2 class="h2">Autres collections</h2></header>
+    <ul class="chips-nav">${CATS.filter(x => x.id !== c.id).map(x => `<li><a href="#collection-${x.id}">${x.title}</a></li>`).join('')}</ul></div></section>`
+  + CtaBand('Un prix sur mesure, une simple conversation', 'Dites-nous ce que vous imaginez. Nous vous répondons avec un devis personnalisé, sans engagement.', 'Bonjour, je souhaite un devis pour une de vos ' + c.title.toLowerCase() + '.');
+}
+
+function ProductView(p) {
+  const c = catOf(p.cat), w = WOODS[p.wood];
+  const msg = `Bonjour, je souhaite un devis pour la porte « ${p.name} ».`;
+  const same = P.filter(x => x.id !== p.id && x.cat === p.cat).concat(P.filter(x => x.id !== p.id && x.cat !== p.cat)).slice(0, 2);
+  return `<div class="wrap"><div class="pd">
+    <div class="pd__media">${doorMedia(p, 'arch parallax', '4/3')}</div>
+    <div class="pd__info">
+      <nav aria-label="Fil d’Ariane"><ol class="crumbs crumbs--ink"><li><a href="#accueil">Accueil</a></li><li><a href="#collection-${c.id}">${c.title}</a></li><li aria-current="page">${p.name}</li></ol></nav>
+      <p class="eyebrow">${c.title}</p>
+      <h1>${p.name}</h1>
+      <p class="wood-line">${woodDot(p.wood)}Essence : ${w.name} · ${w.tone}</p>
+      <p class="lede">${p.desc}</p>
+      <h2 class="pd__h">Personnalisable</h2>
+      <ul class="pd__opts">${p.opts.map(k => `<li>${optIcon(k)}${OPTS[k].label}</li>`).join('')}</ul>
+      <div class="quote-box"><h2>Prix sur devis</h2>
+        <p>Le prix dépend des dimensions, de l’essence, du dessin, de la finition et des options. Appelez-nous : nous vous proposons un devis adapté à votre projet.</p>
+        ${phoneLink('Appeler pour le prix', 'btn--sun btn--xl btn--block')}
+        ${waButton('Écrire sur WhatsApp', 'btn--block', msg)}
+        <span class="phone-num">${esc(CONFIG.phoneDisplay)}</span></div>
+    </div></div></div>
+  <section class="section section--alt" aria-label="Autres portes"><div class="wrap"><header class="sec-head"><p class="eyebrow">À voir aussi</p><h2 class="h2">D’autres portes</h2></header>
+    <div class="grid-products">${same.map(ProductCard).join('')}</div></div></section>`;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   7. ROUTAGE (adresses #accueil, #collection-…, #porte-…)
+   ════════════════════════════════════════════════════════════════ */
+const main = document.getElementById('main');
+const state = { view: null, tok: null };
+
+function resolve(tok) {
+  if (tok.indexOf('collection-') === 0) { const c = CATS.find(x => 'collection-' + x.id === tok); if (c) return { type:'cat', c }; }
+  if (tok.indexOf('porte-') === 0)      { const p = P.find(x => 'porte-' + x.id === tok);          if (p) return { type:'prod', p }; }
+  return { type:'home', anchor: ANCHORS.indexOf(tok) > -1 ? tok : 'accueil' };
+}
+
+function route(tok, force) {
+  tok = tok || 'accueil';
+  const v = resolve(tok), key = v.type === 'home' ? 'home' : tok;
+  const changed = key !== state.view;
+  if (!changed && tok === state.tok && !force) return;
+  if (changed) {
+    main.innerHTML = v.type === 'home' ? HomeView() : v.type === 'cat' ? CategoryView(v.c) : ProductView(v.p);
+    document.title = v.type === 'cat' ? `${v.c.title} — ${CONFIG.brand}` : v.type === 'prod' ? `${v.p.name} — ${CONFIG.brand}` : CONFIG.brand;
+    if (state.view && !reduce) main.animate([{ opacity:0, transform:'translateY(12px)' }, { opacity:1, transform:'none' }], { duration:420, easing:'cubic-bezier(.2,.7,.2,1)' });
+    state.view = key;
+    observeReveals();
+  }
+  state.tok = tok;
+  closeMenu();
+  requestAnimationFrame(() => {
+    const smooth = !changed && !reduce;
+    const target = v.type === 'home' && v.anchor !== 'accueil' ? document.getElementById(v.anchor) : null;
+    if (target) target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block:'start' });
+    else window.scrollTo({ top:0, behavior: smooth ? 'smooth' : 'auto' });
+    updateParallax();
+  });
+}
+
+function navigate(tok) {
+  route(tok, true);
+  try { if (location.hash !== '#' + tok) history.pushState(null, '', '#' + tok); } catch (e) {}
+}
+const hashTok = () => { try { return decodeURIComponent(location.hash.replace(/^#/, '')); } catch (e) { return ''; } };
+addEventListener('popstate', () => route(hashTok()));
+addEventListener('hashchange', () => route(hashTok()));
+
+document.addEventListener('click', e => {
+  const copyBtn = e.target.closest('[data-copy]');
+  if (copyBtn) { copyText(copyBtn); return; }
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  e.preventDefault();
+  const tok = a.getAttribute('href').slice(1);
+  if (tok === 'main') { main.focus({ preventScroll:false }); return; }
+  navigate(tok);
+});
+
+/* ——— Menu mobile ——— */
+function closeMenu() {
+  const b = document.getElementById('menuBtn'), m = document.getElementById('mobileMenu');
+  if (!b || !m || m.hidden) return;
+  m.hidden = true; b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-label', 'Ouvrir le menu'); b.innerHTML = I.menu;
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('#menuBtn'); if (!b) return;
+  const m = document.getElementById('mobileMenu'), open = m.hidden;
+  m.hidden = !open; b.setAttribute('aria-expanded', String(open)); b.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu'); b.innerHTML = open ? I.close : I.menu;
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMenu(); const b = document.getElementById('menuBtn'); if (b) b.focus(); } });
+
+/* ——— Photo introuvable : on la masque (le fond chaud reste) et on le signale dans la console ——— */
+document.addEventListener('error', e => {
+  if (e.target && e.target.tagName === 'IMG') { e.target.style.visibility = 'hidden'; console.warn('Photo introuvable :', e.target.getAttribute('src')); }
+}, true);
+
+/* ——— Copier le numéro ——— */
+function copyText(btn) {
+  const txt = btn.getAttribute('data-copy'), orig = btn.textContent;
+  const done = ok => { btn.textContent = ok ? 'Numéro copié' : 'Sélectionnez le numéro ci-dessus'; setTimeout(() => { btn.textContent = orig; }, 2200); };
+  const fallback = () => { const n = document.getElementById('phoneNum'); if (n) { const r = document.createRange(); r.selectNodeContents(n); const s = getSelection(); s.removeAllRanges(); s.addRange(r); } done(false); };
+  try { navigator.clipboard.writeText(txt).then(() => done(true), fallback); } catch (e) { fallback(); }
+}
+
+/* ——— Apparition douce au défilement ——— */
+let io = null;
+function observeReveals() {
+  const els = main.querySelectorAll('[data-reveal]:not(.in)');
+  if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
+  if (!io) io = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { threshold:.12, rootMargin:'0px 0px -6% 0px' });
+  els.forEach(el => io.observe(el));
+}
+
+/* ——— Parallaxe légère ——— */
+let ticking = false;
+function updateParallax() {
+  ticking = false; if (reduce) return;
+  const vh = innerHeight;
+  document.querySelectorAll('.media.parallax').forEach(m => {
+    const r = m.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh) return;
+    m.style.setProperty('--py', (((r.top + r.height / 2 - vh / 2) / vh) * -28).toFixed(1) + 'px');
+  });
+}
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(updateParallax); } }, { passive:true });
+addEventListener('resize', updateParallax);
+
+/* ════════════════════════════════════════════════════════════════
+   8. DÉMARRAGE
+   ════════════════════════════════════════════════════════════════ */
+document.getElementById('site-header').innerHTML = Navbar();
+document.getElementById('site-footer').innerHTML = Footer();
+document.getElementById('mbar').innerHTML = MobileBar();
+
+{                                                         // données structurées pour les moteurs de recherche
+  const data = { '@context':'https://schema.org', '@type':'HomeAndConstructionBusiness', name:CONFIG.brand, telephone:CONFIG.phoneTel, email:CONFIG.email, hasMap:CONFIG.mapsUrl,
+    description:'Portes en bois sur mesure : portes d’entrée, intérieures, modernes, classiques et vitrées.' };
+  if (CONFIG.facebook) data.sameAs = [CONFIG.facebook];
+  const ld = document.createElement('script'); ld.type = 'application/ld+json';
+  ld.textContent = JSON.stringify(data);
+  document.head.appendChild(ld);
+}
+route(hashTok());
+})();
+</script>
